@@ -136,4 +136,4 @@ Seguimos convenciones específicas para mantener consistencia - consulta [CONTRI
 
 ## 📝 Licencia
 
-Este proyecto está bajo la licencia MIT. Consulta [LICENSE](LICENSE.md) para más detalles.
+Este proyecto está bajo la licencia MIT. Consulta [LICENSE](LICENSE) para más detalles.
