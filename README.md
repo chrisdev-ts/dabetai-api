@@ -1,98 +1,139 @@
+# dabetai API - Backend Principal
+
+API REST para la plataforma de monitoreo de diabetes que conecta pacientes, médicos y modelos de inteligencia artificial.
+
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+  <img src="https://img.shields.io/badge/NestJS-11.x-red?logo=nestjs" alt="NestJS version">
+  <img src="https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript" alt="TypeScript version">
+  <img src="https://img.shields.io/badge/Prisma-6.x-2D3748?logo=prisma" alt="Prisma version">
+  <img src="https://img.shields.io/badge/PostgreSQL-16-blue?logo=postgresql" alt="PostgreSQL version">
+  <img src="https://img.shields.io/badge/JWT-Auth-green?logo=jsonwebtokens" alt="JWT Authentication">
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## � Documentación de la API
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
+La API incluye documentación automática con Swagger UI y Scalar:
+
+- **Swagger UI**: `http://localhost:3000/api/docs`
+- **Scalar UI**: `http://localhost:3000/api/scalar`
+
+<p align="center">
+  <img src="./assets/swagger-preview.png" alt="Swagger UI" width="400"/>
+  <img src="./assets/scalar-preview.png" alt="Scalar UI" width="400"/>
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## 🏥 ¿Qué es dabetai API?
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+**dabetai API** es el backend central de la plataforma integral para el monitoreo de diabetes que incluye:
 
-## Project setup
+- **API REST** (esta): backend principal para todos los servicios
+- **App móvil**: para pacientes, monitoreo y predicciones
+- **App web**: para médicos, seguimiento de pacientes
+- **API de IA**: predicción de complicaciones diabéticas
+
+La API maneja la autenticación, gestión de usuarios (pacientes y médicos), almacenamiento de datos médicos y comunicación con los modelos de IA para **retinopatía, nefropatía, neuropatía y pie diabético**.
+
+---
+
+## ✨ Funcionalidades
+
+🔐 **Autenticación JWT** - registro y login de usuarios con roles (paciente, médico, admin)  
+� **Gestión de usuarios** - CRUD completo para pacientes y médicos  
+� **Datos médicos** - almacenamiento de información de diabetes y comorbilidades  
+� **Registro en 2 pasos** - cuenta básica + completar perfil médico  
+� **Documentación automática** - Swagger UI y Scalar para testing de APIs  
+🛡️ **Seguridad robusta** - hash de contraseñas, validación de datos y tokens seguros  
+�️ **Base de datos relacional** - PostgreSQL con Prisma ORM  
+📈 **Estadísticas** - endpoints para métricas de pacientes y médicos
+
+---
+
+## 🛠 Tecnologías
+
+- **NestJS** - Framework backend escalable y modular
+- **TypeScript** - Tipado estático para mayor robustez
+- **Prisma ORM** - Gestión de base de datos type-safe
+- **PostgreSQL** - Base de datos relacional
+- **JWT** - Autenticación con tokens seguros
+- **Swagger/OpenAPI** - Documentación automática de APIs
+- **bcrypt** - Hash seguro de contraseñas
+- **class-validator** - Validación de datos de entrada
+
+---
+
+## ⚡ Instalación rápida
+
+### Prerrequisitos
+
+- **Node.js** (v18 o superior)
+- **PostgreSQL** (v14 o superior)
+- **npm** o **yarn**
+
+### Pasos
+
+1. **Clonar repositorio**
 
 ```bash
-$ npm install
+git clone https://github.com/chrisdev-ts/dabetai-api.git
+cd dabetai-api
 ```
 
-## Compile and run the project
+2. **Instalar dependencias**
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm install
 ```
 
-## Run tests
+3. **Configurar base de datos**
+   Crea `.env` en la raíz:
+
+```env
+DATABASE_URL="postgresql://usuario:contraseña@localhost:5432/dabetai_db"
+JWT_SECRET="tu_jwt_secret_super_seguro"
+NODE_ENV="development"
+```
+
+4. **Ejecutar migraciones de Prisma**
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npx prisma migrate dev
+npx prisma generate
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+5. **Iniciar servidor**
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+npm run start:dev
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+La API estará disponible en `http://localhost:3000`
 
-## Resources
+### 📚 Acceder a la documentación
 
-Check out a few resources that may come in handy when working with NestJS:
+- **Swagger UI**: `http://localhost:3000/api/docs`
+- **Scalar UI**: `http://localhost:3000/api/scalar`
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+---
 
-## Support
+## 🏗 Ecosistema dabetai: nuestros repositorios
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+dabetai está compuesto por múltiples repositorios especializados:
 
-## Stay in touch
+| Repositorio                                                             | Propósito                   | Estado           |
+| ----------------------------------------------------------------------- | --------------------------- | ---------------- |
+| **[dabetai-mobileapp](https://github.com/Fermin-Cardenas/dabetai-mobileapp)** | App para pacientes          | ✅ En desarrollo |
+| **[dabetai-webapp](https://github.com/chrisdev-ts/dabetai-webapp)**     | App web para médicos        | ✅ En desarrollo |
+| **[dabetai-aiapi](https://github.com/aleor25/dabetai-aiapi)**           | API de IA y predicciones    | ✅ En desarrollo |
+| **[dabetai-aimodels](https://github.com/chrisdev-ts/dabetai-aimodels)** | Modelos de machine learning | ✅ En desarrollo |
+| **[dabetai-landing](https://github.com/chrisdev-ts/dabetai-landing)**   | Página de aterrizaje        | ✅ En desarrollo |
+| **dabetai-api**                                                         | API principal del backend   | ✅ En desarrollo |
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+---
 
-## License
+## 🤝 Colaboración interna
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+Seguimos convenciones específicas para mantener consistencia - consulta [CONTRIBUTING.MD](CONTRIBUTING.MD).
+
+## 📝 Licencia
+
+Este proyecto está bajo la licencia MIT. Consulta [LICENSE](LICENSE.md) para más detalles.
