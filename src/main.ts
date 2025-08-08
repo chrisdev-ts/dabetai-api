@@ -21,12 +21,19 @@ async function bootstrap() {
   // Swagger configuration
   const config = new DocumentBuilder()
     .setTitle('dabetai API')
-    .setDescription('API para la gestión de pacientes con diabetes - dabetai')
+    .setDescription(
+      'API REST para la plataforma de monitoreo de diabetes dabetai. ' +
+      'Permite la gestión integral de pacientes diabéticos, médicos especialistas y datos médicos. ' +
+      'Incluye autenticación JWT, registro en dos pasos, seguimiento de comorbilidades ' +
+      '(retinopatía, nefropatía, neuropatía, pie diabético) y conexión con modelos de IA ' +
+      'para predicción de complicaciones. Diseñada para conectar aplicaciones móviles, ' +
+      'web y sistemas de inteligencia artificial del ecosistema dabetai.'
+    )
     .setVersion('1.0')
-    .addTag('auth', 'Autenticación y registro de usuarios')
-    .addTag('users', 'Gestión de usuarios')
-    .addTag('patients', 'Gestión de pacientes')
-    .addTag('doctors', 'Gestión de doctores')
+    .addTag('auth', 'Autenticación JWT y registro de usuarios (básico + perfil médico)')
+    .addTag('users', 'Gestión general de usuarios y perfiles')
+    .addTag('patients', 'CRUD de pacientes con datos médicos y diabetes')
+    .addTag('doctors', 'CRUD de médicos especialistas y relaciones paciente-doctor')
     .addBearerAuth(
       {
         type: 'http',
@@ -44,7 +51,7 @@ async function bootstrap() {
 
   // Swagger UI tradicional
   SwaggerModule.setup('api/docs', app, document, {
-    customSiteTitle: 'DabetAI API Documentation',
+    customSiteTitle: 'DabetAI API - Diabetes Management Platform',
     customfavIcon: 'https://swagger.io/favicon.ico',
     customCssUrl:
       'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui.min.css',
@@ -56,9 +63,10 @@ async function bootstrap() {
     <!doctype html>
     <html>
       <head>
-        <title>DabetAI API - Scalar Documentation</title>
+        <title>DabetAI API - Diabetes Management Platform | Scalar Docs</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Interactive API documentation for DabetAI diabetes management platform" />
         <style>
           body { margin: 0; }
         </style>
@@ -79,8 +87,9 @@ async function bootstrap() {
   const port = process.env.PORT ?? 3000;
   await app.listen(port);
 
-  console.log(`🚀 dabetai API running on: http://localhost:${port}`);
+  console.log(`🚀 DabetAI API running on: http://localhost:${port}`);
   console.log(`📚 Swagger UI: http://localhost:${port}/api/docs`);
   console.log(`✨ Scalar UI: http://localhost:${port}/api/scalar`);
+  console.log(`🏥 Diabetes management platform ready for patients & doctors`);
 }
 bootstrap();
