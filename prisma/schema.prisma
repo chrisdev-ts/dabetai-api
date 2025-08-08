@@ -1,0 +1,66 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  firstName String?
+  lastName  String?
+  secondLastName String?
+  role      Role     @default(USER)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Información médica específica para pacientes
+  diabetesType          DiabetesType?
+  diagnosisYear         Int?
+  hasHypertension       Boolean?
+  birthDate             DateTime?
+  gender                Gender?
+  height                Float?  // en cm
+  weight                Float?  // en kg
+  
+  // Información adicional del paciente
+  medicalHistory        String?
+  currentMedications    String?
+  allergies             String?
+  emergencyContact      String?
+  emergencyPhone        String?
+
+  @@map("users")
+}
+
+enum Role {
+  USER
+  ADMIN
+  DOCTOR
+  PATIENT
+}
+
+enum DiabetesType {
+  TYPE_1
+  TYPE_2
+  GESTATIONAL
+  MODY
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
