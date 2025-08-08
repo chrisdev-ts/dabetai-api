@@ -23,17 +23,23 @@ async function bootstrap() {
     .setTitle('dabetai API')
     .setDescription(
       'API REST para la plataforma de monitoreo de diabetes dabetai. ' +
-      'Permite la gestión integral de pacientes diabéticos, médicos especialistas y datos médicos. ' +
-      'Incluye autenticación JWT, registro en dos pasos, seguimiento de comorbilidades ' +
-      '(retinopatía, nefropatía, neuropatía, pie diabético) y conexión con modelos de IA ' +
-      'para predicción de complicaciones. Diseñada para conectar aplicaciones móviles, ' +
-      'web y sistemas de inteligencia artificial del ecosistema dabetai.'
+        'Permite la gestión integral de pacientes diabéticos, médicos especialistas y datos médicos. ' +
+        'Incluye autenticación JWT, registro en dos pasos, seguimiento de comorbilidades ' +
+        '(retinopatía, nefropatía, neuropatía, pie diabético) y conexión con modelos de IA ' +
+        'para predicción de complicaciones. Diseñada para conectar aplicaciones móviles, ' +
+        'web y sistemas de inteligencia artificial del ecosistema dabetai.',
     )
     .setVersion('1.0')
-    .addTag('auth', 'Autenticación JWT y registro de usuarios (básico + perfil médico)')
+    .addTag(
+      'auth',
+      'Autenticación JWT y registro de usuarios (básico + perfil médico)',
+    )
     .addTag('users', 'Gestión general de usuarios y perfiles')
     .addTag('patients', 'CRUD de pacientes con datos médicos y diabetes')
-    .addTag('doctors', 'CRUD de médicos especialistas y relaciones paciente-doctor')
+    .addTag(
+      'doctors',
+      'CRUD de médicos especialistas y relaciones paciente-doctor',
+    )
     .addBearerAuth(
       {
         type: 'http',
