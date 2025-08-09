@@ -134,6 +134,18 @@ dabetai está compuesto por múltiples repositorios especializados:
 
 Seguimos convenciones específicas para mantener consistencia - consulta [CONTRIBUTING.MD](CONTRIBUTING.MD).
 
-## 📝 Licencia
+## 🤝 Reconocimientos
 
-Este proyecto está bajo la licencia MIT. Consulta [LICENSE](LICENSE) para más detalles.
+Este proyecto fue desarrollado por el equipo de autores:
+
+- Cardenas Cabal Fermín  
+- Ortiz Pérez Alejandro  
+- Serrano Puertos Jorge Christian  
+
+Con la asesoría y guía conceptual de:
+
+- Guarneros Nolasco Luis Rolando  
+- Cruz Ramos Nancy Aracely  
+
+Y con el apoyo académico de la  
+- Universidad Tecnológica del Centro de Veracruz
